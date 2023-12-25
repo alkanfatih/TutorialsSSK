@@ -4,6 +4,7 @@ using _1_Pagination.RequestFeatures;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.OData.Query;
 using System.Text.Json;
 
 namespace _1_Pagination.Controllers
@@ -83,6 +84,14 @@ namespace _1_Pagination.Controllers
             Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(persons.MetaData));
 
             return Ok(persons);
+        }
+
+        [HttpGet]
+        [Route("[action]")]
+        public IActionResult GetAllPersonsByPage4(ODataQueryOptions<Person> options)
+        { 
+            var results = options.ApplyTo(_context.People.AsQueryable()) as IQueryable<Person>;
+            return Ok(results);
         }
     }
 }
