@@ -7,5 +7,8 @@
         public uint MaxAge { get; set; } = 100;
 
         public bool ValidAgeRange => MaxAge> MinAge;
+
+        //Arama Konsunda Eklendi
+        public string? SearchTerm { get; set; }
     }
 }
