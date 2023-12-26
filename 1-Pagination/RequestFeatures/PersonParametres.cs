@@ -10,5 +10,11 @@
 
         //Arama Konsunda Eklendi
         public string? SearchTerm { get; set; }
+
+        //Sıralam Konusunda Eklendi
+        public PersonParametres()
+        {
+            OrderBy = "Id";
+        }
     }
 }

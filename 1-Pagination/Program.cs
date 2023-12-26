@@ -1,4 +1,6 @@
 using _1_Pagination.Contexts;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 
 namespace _1_Pagination
