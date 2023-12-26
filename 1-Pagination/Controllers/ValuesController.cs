@@ -1,5 +1,6 @@
 ﻿using _1_Pagination.ActionFilters;
 using _1_Pagination.Contexts;
+using _1_Pagination.Loggers;
 using _1_Pagination.Models;
 using _1_Pagination.Models.DTOs;
 using AutoMapper;
@@ -16,10 +17,12 @@ namespace _1_Pagination.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
-        public ValuesController(AppDbContext context, IMapper mapper)
+        private readonly ILoggerService _loggerService;
+        public ValuesController(AppDbContext context, IMapper mapper, ILoggerService loggerService)
         {
             _context = context;
             _mapper = mapper;
+            _loggerService = loggerService;
         }
 
         [HttpGet]
@@ -55,7 +58,9 @@ namespace _1_Pagination.Controllers
             }
             else
             {
+                _loggerService.LogWarning("Dikkat");
                 return BadRequest();
+                
             }
             
         }

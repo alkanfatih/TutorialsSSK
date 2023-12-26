@@ -1,0 +1,12 @@
+2023-12-26 15:22:07.2027 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-12-26 15:22:07.3058 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.7.2287. Product version: 5.2.7+a1ef7cd83b5a6a172142a6850f0ced4e759a4b3b. GlobalAssemblyCache: False
+2023-12-26 15:22:07.4405 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\fatih.alkan\source\repos\TutorialsSSK\1-Pagination\nlog.config
+2023-12-26 15:22:07.5215 Info Configuration initialized.
+2023-12-26 15:23:48.1138 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-12-26 15:23:48.3837 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.7.2287. Product version: 5.2.7+a1ef7cd83b5a6a172142a6850f0ced4e759a4b3b. GlobalAssemblyCache: False
+2023-12-26 15:23:48.4288 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\fatih.alkan\source\repos\TutorialsSSK\1-Pagination\nlog.config
+2023-12-26 15:23:48.5181 Info Configuration initialized.
+2023-12-26 15:25:10.6242 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-12-26 15:25:10.8908 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.7.2287. Product version: 5.2.7+a1ef7cd83b5a6a172142a6850f0ced4e759a4b3b. GlobalAssemblyCache: False
+2023-12-26 15:25:10.9884 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\fatih.alkan\source\repos\TutorialsSSK\1-Pagination\nlog.config
+2023-12-26 15:25:11.0734 Info Configuration initialized.

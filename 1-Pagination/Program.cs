@@ -1,9 +1,11 @@
 using _1_Pagination.ActionFilters;
 using _1_Pagination.AutoMappers;
 using _1_Pagination.Contexts;
+using _1_Pagination.Loggers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
+using NLog;
 
 namespace _1_Pagination
 {
@@ -13,6 +15,7 @@ namespace _1_Pagination
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -20,11 +23,17 @@ namespace _1_Pagination
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            //Logger Service
+            builder.Services.AddSingleton<ILoggerService, LoggerService>();
+
             var conn = builder.Configuration.GetConnectionString("DefaultConn");
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(conn));
             builder.Services.AddAutoMapper(typeof(Mapping));
 
             builder.Services.AddScoped<ValidationFilterAttribute>();
+
+            //HýzSýnýrlandýmasý
+            builder.Services.Configure<IpRateLimitOptions>
 
             var app = builder.Build();
 
