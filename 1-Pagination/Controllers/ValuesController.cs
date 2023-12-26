@@ -1,12 +1,15 @@
-﻿using _1_Pagination.Contexts;
+﻿using _1_Pagination.ActionFilters;
+using _1_Pagination.Contexts;
 using _1_Pagination.Models;
 using _1_Pagination.Models.DTOs;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
 namespace _1_Pagination.Controllers
 {
+    //[ValidationFilterAttribute]
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
@@ -29,11 +32,19 @@ namespace _1_Pagination.Controllers
 
         [HttpPost]
         [Route("[action]")]
+        [ValidationFilterAttribute]
+        //[ServiceFilter(typeof(ValidationFilterAttribute), Order = 1)]
         public IActionResult CreatePerson(PersonDTO model)
         {
             //Person person = new Person();
             //person.Name = model.Name;
             //person.Age = model.Age;
+
+            //if (model is null)
+            //    return BadRequest(); // 400
+
+            //if(!ModelState.IsValid)
+            //    return UnprocessableEntity(model);
 
             var person = _mapper.Map<Person>(model);
 
