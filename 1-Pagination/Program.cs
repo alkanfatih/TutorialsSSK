@@ -2,6 +2,7 @@ using _1_Pagination.ActionFilters;
 using _1_Pagination.AutoMappers;
 using _1_Pagination.Contexts;
 using _1_Pagination.Loggers;
+using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
@@ -33,7 +34,26 @@ namespace _1_Pagination
             builder.Services.AddScoped<ValidationFilterAttribute>();
 
             //HýzSýnýrlandýmasý
-            builder.Services.Configure<IpRateLimitOptions>
+            builder.Services.AddMemoryCache();
+            builder.Services.AddHttpContextAccessor();
+
+            builder.Services.Configure<IpRateLimitOptions>(opt => 
+            {
+                opt.GeneralRules = new List<RateLimitRule>()
+                {
+                    new RateLimitRule()
+                    {
+                        Endpoint = "*",
+                        Limit = 3,
+                        Period = "1m"
+                    }
+                };
+            });
+
+            builder.Services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
+            builder.Services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+            builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+            builder.Services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
 
             var app = builder.Build();
 
@@ -46,6 +66,8 @@ namespace _1_Pagination
 
             app.UseHttpsRedirection();
 
+            //sýnýrlama...
+            app.UseIpRateLimiting();
             app.UseAuthorization();
 
 
