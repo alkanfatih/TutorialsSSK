@@ -1,3 +1,4 @@
+using _1_Pagination.AutoMappers;
 using _1_Pagination.Contexts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -20,6 +21,7 @@ namespace _1_Pagination
 
             var conn = builder.Configuration.GetConnectionString("DefaultConn");
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(conn));
+            builder.Services.AddAutoMapper(typeof(Mapping));
 
             var app = builder.Build();
 

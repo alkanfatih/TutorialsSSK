@@ -1,6 +1,6 @@
 ﻿namespace _1_Pagination.Models
 {
-    public class Person
+    public record Person
     {
         public int Id { get; set; }
         public string Name { get; set; }
