@@ -3,6 +3,7 @@ using _1_Pagination.AutoMappers;
 using _1_Pagination.Contexts;
 using _1_Pagination.Loggers;
 using _1_Pagination.Models;
+using _1_Pagination.TokenServices;
 using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -69,6 +70,9 @@ namespace _1_Pagination
                 //Anahtar Tanýmlama
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
             });
+
+            //MyTokenService
+            builder.Services.AddScoped<MyTokenService>();
 
             builder.Services.AddAutoMapper(typeof(Mapping));
 

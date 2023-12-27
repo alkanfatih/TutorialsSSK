@@ -1,10 +1,12 @@
 ﻿using _1_Pagination.Contexts;
 using _1_Pagination.Models;
 using _1_Pagination.Models.DTOs;
+using _1_Pagination.TokenServices;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq.Dynamic.Core.Tokenizer;
 
 namespace _1_Pagination.Controllers
 {
@@ -15,12 +17,14 @@ namespace _1_Pagination.Controllers
         private readonly AppIdDbContext _idContext;
         private readonly IMapper _mapping;
         private readonly UserManager<AppUser> _userManager;
+        private readonly MyTokenService _myTokenService;
 
-        public AccountController(AppIdDbContext idContext, IMapper mapping, UserManager<AppUser> userManager)
+        public AccountController(AppIdDbContext idContext, IMapper mapping, UserManager<AppUser> userManager, MyTokenService myTokenService)
         {
             _idContext = idContext;
             _mapping = mapping;
             _userManager = userManager;
+            _myTokenService = myTokenService;
         }
 
         [HttpPost]
@@ -35,5 +39,16 @@ namespace _1_Pagination.Controllers
 
             return result;
         }
+
+        [HttpPost]
+        [Route("[action]")]
+        public async Task<IActionResult> Login([FromBody] UserLoginDTO model)
+        {
+            if (!await _myTokenService.ValidateUser(model))
+                return Unauthorized();
+
+            return Ok(new { Token = await _myTokenService.CreateToken() });
+        }
+
     }
 }

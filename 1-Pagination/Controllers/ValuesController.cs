@@ -4,6 +4,7 @@ using _1_Pagination.Loggers;
 using _1_Pagination.Models;
 using _1_Pagination.Models.DTOs;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
@@ -25,6 +26,7 @@ namespace _1_Pagination.Controllers
             _loggerService = loggerService;
         }
 
+        [Authorize]
         [HttpGet]
         [Route("[action]")]
         public IActionResult GetAllPersons()
