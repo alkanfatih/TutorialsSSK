@@ -4,11 +4,14 @@ using _1_Pagination.Contexts;
 using _1_Pagination.Loggers;
 using _1_Pagination.Models;
 using AspNetCoreRateLimit;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using NLog;
+using System.Text;
 
 namespace _1_Pagination
 {
@@ -46,6 +49,26 @@ namespace _1_Pagination
 
                 options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<AppIdDbContext>();
+
+            //JWT Token Service
+            var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+            var secretKey = jwtSettings["secretKey"];
+            builder.Services.AddAuthentication(options =>
+            {
+                //Authentication schemesý için bearer kullanýyoruz.
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters 
+            { 
+                ValidateIssuer = true, //Üreteni doðrula
+                ValidateAudience = true, //Alýcýyý doðrula
+                ValidateLifetime = true, //süre
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = jwtSettings["validIssuer"],
+                ValidAudience = jwtSettings["validAudience"],
+                //Anahtar Tanýmlama
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+            });
 
             builder.Services.AddAutoMapper(typeof(Mapping));
 
