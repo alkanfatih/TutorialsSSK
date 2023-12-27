@@ -9,6 +9,7 @@ namespace _1_Pagination.AutoMappers
         public Mapping()
         {
             CreateMap<Person, PersonDTO>().ReverseMap();
+            CreateMap<UserRegisterDTO, AppUser>();
         }
     }
 }
