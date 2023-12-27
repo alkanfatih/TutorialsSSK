@@ -2,7 +2,9 @@ using _1_Pagination.ActionFilters;
 using _1_Pagination.AutoMappers;
 using _1_Pagination.Contexts;
 using _1_Pagination.Loggers;
+using _1_Pagination.Models;
 using AspNetCoreRateLimit;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
@@ -27,8 +29,24 @@ namespace _1_Pagination
             //Logger Service
             builder.Services.AddSingleton<ILoggerService, LoggerService>();
 
+            //AppDbContext
             var conn = builder.Configuration.GetConnectionString("DefaultConn");
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(conn));
+
+            //IdentityDbContext
+            builder.Services.AddDbContext<AppIdDbContext>(options => options.UseSqlServer(conn));
+
+            builder.Services.AddIdentity<AppUser, IdentityRole>(options => 
+            { 
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 3;
+
+                options.User.RequireUniqueEmail = true;
+            }).AddEntityFrameworkStores<AppIdDbContext>();
+
             builder.Services.AddAutoMapper(typeof(Mapping));
 
             builder.Services.AddScoped<ValidationFilterAttribute>();
@@ -68,6 +86,9 @@ namespace _1_Pagination
 
             //sýnýrlama...
             app.UseIpRateLimiting();
+
+            //Login
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

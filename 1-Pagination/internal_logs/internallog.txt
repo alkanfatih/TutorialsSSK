@@ -30,3 +30,19 @@
 2023-12-26 16:09:53.4523 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.7.2287. Product version: 5.2.7+a1ef7cd83b5a6a172142a6850f0ced4e759a4b3b. GlobalAssemblyCache: False
 2023-12-26 16:09:53.5373 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\fatih.alkan\source\repos\TutorialsSSK\1-Pagination\nlog.config
 2023-12-26 16:09:55.0175 Info Configuration initialized.
+2023-12-27 09:50:38.1710 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-12-27 09:50:38.2725 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.7.2287. Product version: 5.2.7+a1ef7cd83b5a6a172142a6850f0ced4e759a4b3b. GlobalAssemblyCache: False
+2023-12-27 09:50:38.4500 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\fatih.alkan\source\repos\TutorialsSSK\1-Pagination\nlog.config
+2023-12-27 09:50:38.5239 Info Configuration initialized.
+2023-12-27 10:44:29.5766 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-12-27 10:44:29.6081 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.7.2287. Product version: 5.2.7+a1ef7cd83b5a6a172142a6850f0ced4e759a4b3b. GlobalAssemblyCache: False
+2023-12-27 10:44:29.6306 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\fatih.alkan\source\repos\TutorialsSSK\1-Pagination\nlog.config
+2023-12-27 10:44:29.6459 Info Configuration initialized.
+2023-12-27 10:44:30.9923 Info AppDomain Shutting down. LogFactory closing...
+2023-12-27 10:44:31.0034 Info LogFactory has been closed.
+2023-12-27 10:46:30.3246 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-12-27 10:46:30.3628 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.7.2287. Product version: 5.2.7+a1ef7cd83b5a6a172142a6850f0ced4e759a4b3b. GlobalAssemblyCache: False
+2023-12-27 10:46:30.3853 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\fatih.alkan\source\repos\TutorialsSSK\1-Pagination\nlog.config
+2023-12-27 10:46:30.4038 Info Configuration initialized.
+2023-12-27 10:46:36.5128 Info AppDomain Shutting down. LogFactory closing...
+2023-12-27 10:46:36.5307 Info LogFactory has been closed.
