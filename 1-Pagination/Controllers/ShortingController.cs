@@ -13,6 +13,7 @@ namespace _1_Pagination.Controllers
 {
     [Route("api/[controller]s")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v2")]
     public class ShortingController : ControllerBase
     {
         private readonly AppDbContext _context;

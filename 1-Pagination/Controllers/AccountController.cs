@@ -12,6 +12,7 @@ namespace _1_Pagination.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v1")]
     public class AccountController : ControllerBase
     {
         private readonly AppIdDbContext _idContext;

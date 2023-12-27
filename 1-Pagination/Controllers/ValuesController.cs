@@ -14,6 +14,7 @@ namespace _1_Pagination.Controllers
     //[ValidationFilterAttribute]
     [Route("api/[controller]")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v2")]
     public class ValuesController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -31,6 +32,24 @@ namespace _1_Pagination.Controllers
         [Route("[action]")]
         public IActionResult GetAllPersons()
         { 
+            var result = _context.People.ToList();
+            return Ok(result);
+        }
+
+        [Authorize(Roles = "User")]
+        [HttpGet]
+        [Route("[action]")]
+        public IActionResult GetAllPersonsForOnlyUser()
+        {
+            var result = _context.People.ToList();
+            return Ok(result);
+        }
+
+        [Authorize(Roles = "Editor")]
+        [HttpGet]
+        [Route("[action]")]
+        public IActionResult GetAllPersonsForOnlyEditor()
+        {
             var result = _context.People.ToList();
             return Ok(result);
         }

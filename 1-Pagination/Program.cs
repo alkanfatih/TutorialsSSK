@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using NLog;
 using System.Text;
 
@@ -28,7 +29,39 @@ namespace _1_Pagination
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(s => 
+            {
+                //Versiyon
+                s.SwaggerDoc("v1", new OpenApiInfo { Title = "SGK Eðitim", Version = "v1", Description = "SGK JWT Token Operasyonlarý", TermsOfService = new Uri("https://alkanfatih.com"), Contact = new OpenApiContact { Name = "alkanfatih", Email = "alkanfatih@hotmail.com.tr" } });
+
+                s.SwaggerDoc("v2", new OpenApiInfo { Title = "SGK Eðitim", Version = "v2", Description = "SGK Sayfalama-Sýralam V.B.", TermsOfService = new Uri("https://alkanfatih.com"), Contact = new OpenApiContact { Name = "alkanfatih", Email = "alkanfatih@hotmail.com.tr" } });
+
+                //Login
+                s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description =  "Place to Add JWT with Bearer",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+
+                s.AddSecurityRequirement(new OpenApiSecurityRequirement() 
+                {
+                    { 
+                        new OpenApiSecurityScheme
+                        { 
+                            Reference = new OpenApiReference
+                            { 
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Name ="Bearer"
+                        },
+                        new List<string>()
+                    }
+                });
+            });
 
             //Logger Service
             builder.Services.AddSingleton<ILoggerService, LoggerService>();
@@ -106,7 +139,11 @@ namespace _1_Pagination
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerUI(s => 
+                {
+                    s.SwaggerEndpoint("/swagger/v1/swagger.json", "SGK Eðitim V1");
+                    s.SwaggerEndpoint("/swagger/v2/swagger.json", "SGK Eðitim V2");
+                });
             }
 
             app.UseHttpsRedirection();

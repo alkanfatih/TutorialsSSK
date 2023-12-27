@@ -11,6 +11,7 @@ namespace _1_Pagination.Controllers
 {
     [Route("api/[controller]s")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v2")]
     public class FilterController : ControllerBase
     {
         private readonly AppDbContext _context;
