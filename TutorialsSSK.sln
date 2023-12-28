@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicType", "DynamicType\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecordKullanimi", "RecordKullanimi\RecordKullanimi.csproj", "{CD6F92C4-E3BB-4606-B8CA-57FA7D26C9F4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiApplicationMVC", "..\ApiApplicationMVC\ApiApplicationMVC\ApiApplicationMVC.csproj", "{5BF0E4A1-685E-474B-AFA6-798E1F3BE91D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiApplicationMVC", "ApiApplicationMVC\ApiApplicationMVC\ApiApplicationMVC.csproj", "{0368B684-81A0-42BA-BF93-33E5ACCB3635}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{CD6F92C4-E3BB-4606-B8CA-57FA7D26C9F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD6F92C4-E3BB-4606-B8CA-57FA7D26C9F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD6F92C4-E3BB-4606-B8CA-57FA7D26C9F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5BF0E4A1-685E-474B-AFA6-798E1F3BE91D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5BF0E4A1-685E-474B-AFA6-798E1F3BE91D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5BF0E4A1-685E-474B-AFA6-798E1F3BE91D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5BF0E4A1-685E-474B-AFA6-798E1F3BE91D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0368B684-81A0-42BA-BF93-33E5ACCB3635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0368B684-81A0-42BA-BF93-33E5ACCB3635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0368B684-81A0-42BA-BF93-33E5ACCB3635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0368B684-81A0-42BA-BF93-33E5ACCB3635}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
