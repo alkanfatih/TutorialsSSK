@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using NLog;
+using System.Reflection;
 using System.Text;
 
 namespace _1_Pagination
@@ -61,6 +62,10 @@ namespace _1_Pagination
                         new List<string>()
                     }
                 });
+
+                var xmlFileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+
+                s.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFileName));
             });
 
             //Logger Service

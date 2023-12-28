@@ -28,6 +28,15 @@ namespace _1_Pagination.Controllers
             _myTokenService = myTokenService;
         }
 
+        /// <summary>
+        /// Add a new User to Register
+        /// </summary>
+        /// <param name="model">a user object</param>
+        /// <remarks>
+        /// Sample body content
+        /// {"id":1, firstName="fatih", "lastName":"alkan"}
+        /// </remarks>
+        /// <returns code="200">Added</returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IdentityResult> RegisterUser(UserRegisterDTO model)
@@ -41,6 +50,15 @@ namespace _1_Pagination.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Add a new User to Login
+        /// </summary>
+        /// <param name="model">a user object</param>
+        /// <remarks>
+        /// Sample body content
+        /// {"id":1, firstName="fatih", "lastName":"alkan"}
+        /// </remarks>
+        /// <returns code="200">Added</returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> Login([FromBody] UserLoginDTO model)
